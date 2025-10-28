@@ -7,15 +7,17 @@
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "es2022",
-    "target": "esnext",
-    "types": [],
+    "module": "NodeNext",
+    "target": "ES2022",
+    "moduleResolution": "NodeNext",
+    "types": ["node"],
+
     // For nodejs:
     // "lib": ["esnext"],
     // "types": ["node"],
     // and npm install -D @types/node
 
-    //  Added for Express and CommonJS compatibility
+    // Added for Express and CommonJS compatibility
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
 
