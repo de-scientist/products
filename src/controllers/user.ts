@@ -33,10 +33,22 @@ export const createProduct = async (req: Request, res: Response) => {
     }
 };
 
-export const getUser = async (req: Request, res: Response) => {
+export const getProduct = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-
+        const product = await client.product.findFirst({
+            where: {
+                id: String(id),
+                isDeleted: false
+            }
+        });
+        if (!product){
+            res.status(404).json({ message: "Product not found"});
+        } else {
+            res.status(200).json(product);
+        }
+    } catch (e) {
+        res.status(500).json({ message: "Something went wrong try again later"})
     }
 }
 
