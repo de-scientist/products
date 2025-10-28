@@ -15,7 +15,7 @@ datasource db {
 
 //define the Product model
 model Product {
-  id   String @id @default(uuid()) @map("productID")
+  id   String @map("productID") @id @default(uuid()) 
   productName String @map("productName")
   productDescription String @map("productDescription")
   unitsLeft Int @map("unitsLeft")
