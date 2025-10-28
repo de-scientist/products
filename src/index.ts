@@ -4,7 +4,8 @@ import { PrismaClient } from "@prisma/client";
 
 //initialize express app
 const app = express();
-
+//initialize prisma client
+const client = new PrismaClient();
 
 
 //define a route handler for the listening root URL
