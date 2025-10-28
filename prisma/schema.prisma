@@ -5,11 +5,22 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlserver"
   url      = env("DATABASE_URL")
+}
+
+//define the Product model
+model Product {
+  id   String @id @default(uuid()) @map("productID")
+  productName String @map("productName")
+  productDescription String @map("productDescription")
+  unitsLeft Int @map("unitsLeft")
+  isDeleted Boolean @map("isDeleted") @default(false)
+  createdAt DateTime @map("createdAt") @default(now())
+  updatedAt DateTime @map("updatedAt") @updatedAt
+
 }
