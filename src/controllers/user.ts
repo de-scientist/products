@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 const client = new PrismaClient();
 
-export const getUsers = async (_req: Request, res: Response) => {
+export const getProducts = async (_req: Request, res: Response) => {
     try {
         const users = await client.product.findMany({
             where: {
@@ -16,7 +16,7 @@ export const getUsers = async (_req: Request, res: Response) => {
     }
 };
 
-export const createUser = async (req: Request, res: Response) => {
+export const createProduct = async (req: Request, res: Response) => {
     try {
         const { productName, productDescription, unitsLeft} = req.body;
 
@@ -32,4 +32,11 @@ export const createUser = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Something went wrong try again later"})
     }
 };
+
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+    }
+}
 

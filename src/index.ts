@@ -1,6 +1,6 @@
 //importing express module
 import express from "express";
-import { createUser, getUsers } from "./controllers/user.ts";
+import { createProduct, getProducts } from "./controllers/user.ts";
 import { PrismaClient } from "@prisma/client";
 
 //initialize express app
@@ -10,8 +10,8 @@ const client = new PrismaClient();
 
 app.use(express.json());
 
-app.get("/users", getUsers);
-app.post("/users", createUser);
+app.get("/users", getProducts);
+app.post("/users", createProduct);
 
 //define a route handler for the listening root URL
 const PORT = 3000;
