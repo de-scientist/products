@@ -50,5 +50,28 @@ export const getProduct = async (req: Request, res: Response) => {
     } catch (e) {
         res.status(500).json({ message: "Something went wrong try again later"})
     }
-}
+};
+
+export const updateProduct = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const { productName, productDescription, unitsLeft } = req.body;
+
+        const updateProduct = await client.product.update({
+            where: {
+                id: String(id)
+            },
+            data: {
+                productName: productName && productName,
+                productDescription: productDescription && productDescription,
+                unitsLeft: unitsLeft && unitsLeft
+            }
+            }
+        );
+        res.status(200).json(updateProduct);
+    } catch (e) {
+        res.status(500).json({ message: "Something went wrong try again later"});
+    }
+};
+    
 
