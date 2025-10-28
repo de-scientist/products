@@ -15,6 +15,10 @@
     // "types": ["node"],
     // and npm install -D @types/node
 
+    //  Added for Express and CommonJS compatibility
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
     // Other Outputs
     "sourceMap": true,
     "declaration": true,
@@ -35,12 +39,15 @@
     // Recommended Options
     "strict": true,
     "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
+
+    // Adjusted for smoother ESM/CommonJS interop
+    "verbatimModuleSyntax": false,
+
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "noEmit": true
   }
 }
