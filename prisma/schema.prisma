@@ -15,13 +15,13 @@ datasource db {
 
 //define the Product model
 model Product {
-  id   String @map("productID") @id @default(uuid()) 
-  productName String @map("productName")
-  productDescription String @map("productDescription")
-  unitsLeft Int @map("unitsLeft")
-  isDeleted Boolean @map("isDeleted") @default(false)
-  createdAt DateTime @map("createdAt") @default(now())
-  updatedAt DateTime @map("updatedAt") @updatedAt
+  id                 String   @id @default(uuid()) @map("productID")
+  productName        String   @map("productName")
+  productDescription String   @map("productDescription")
+  unitsLeft          Int      @map("unitsLeft")
+  isDeleted          Boolean  @default(false) @map("isDeleted")
+  createdAt          DateTime @default(now()) @map("createdAt")
+  updatedAt          DateTime @updatedAt @map("updatedAt")
 
-@@map("Products_Table")
+  @@map("Products_Table")
 }
