@@ -57,7 +57,7 @@ export const updateProduct = async (req: Request, res: Response) => {
         const { id } = req.params;
         const { productName, productDescription, unitsLeft } = req.body;
 
-        const updateProduct = await client.product.update({
+        const updatedProduct = await client.product.update({
             where: {
                 id: String(id)
             },
@@ -68,7 +68,22 @@ export const updateProduct = async (req: Request, res: Response) => {
             }
             }
         );
-        res.status(200).json(updateProduct);
+        res.status(200).json(updatedProduct);
+    } catch (e) {
+        res.status(500).json({ message: "Something went wrong try again later"});
+    }
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const deletedProduct = await client.product.delete({
+            where: {
+                id: String(id)
+            } 
+        });
+        res.status(200).json(deletedProduct);
     } catch (e) {
         res.status(500).json({ message: "Something went wrong try again later"});
     }
