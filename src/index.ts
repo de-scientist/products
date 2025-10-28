@@ -1,7 +1,9 @@
 //importing express module
-import express, { type Express, type Request, type Response } from "express";
+import express from "express";
+import { PrismaClient } from "@prisma/client";
 
-const app: Express = express();
+//initialize express app
+const app = express();
 
 
 
