@@ -23,4 +23,5 @@ model Product {
   createdAt DateTime @map("createdAt") @default(now())
   updatedAt DateTime @map("updatedAt") @updatedAt
 
+@@map("Products_Table")
 }
