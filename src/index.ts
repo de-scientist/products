@@ -1,6 +1,13 @@
 //importing express module
 import express from "express";
-import { createProduct, createProducts, getProducts, getProduct, updateProduct, deleteProduct } from "./controllers/user.ts";
+import {
+  createProduct,
+  createProducts,
+  getProducts,
+  getProduct,
+  updateProduct,
+  deleteProduct,
+} from "./controllers/user.ts";
 import { PrismaClient } from "@prisma/client";
 
 //initialize express app
