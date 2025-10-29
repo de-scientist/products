@@ -1,6 +1,6 @@
 //importing express module
 import express from "express";
-import { createProduct, getProducts, getProduct, updateProduct, deleteProduct } from "./controllers/user.ts";
+import { createProduct, createProducts, getProducts, getProduct, updateProduct, deleteProduct } from "./controllers/user.ts";
 import { PrismaClient } from "@prisma/client";
 
 //initialize express app
@@ -11,6 +11,7 @@ const client = new PrismaClient();
 app.use(express.json());
 
 app.get("/products", getProducts);
+app.post("/products/bulk", createProducts);
 app.post("/products", createProduct);
 app.post("/products/:id", getProduct);
 app.patch("/products/:id", updateProduct);

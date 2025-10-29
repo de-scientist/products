@@ -52,6 +52,7 @@ export const createProduct = async (req: Request, res: Response) => {
     }
 };
 
+//define controller function to get a single product by id
 export const getProduct = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -71,6 +72,7 @@ export const getProduct = async (req: Request, res: Response) => {
     }
 };
 
+//define controller function to update a product by id
 export const updateProduct = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
@@ -93,6 +95,7 @@ export const updateProduct = async (req: Request, res: Response) => {
     }
 };
 
+//define controller function to delete a product by id
 export const deleteProduct = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
