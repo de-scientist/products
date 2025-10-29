@@ -1,8 +1,11 @@
+//import required modules
 import { type Request, type Response } from "express";
 import { PrismaClient } from "@prisma/client";
 
+//initialize prisma client
 const client = new PrismaClient();
 
+//define controller function to get all products
 export const getProducts = async (_req: Request, res: Response) => {
     try {
         const users = await client.product.findMany({
@@ -15,6 +18,21 @@ export const getProducts = async (_req: Request, res: Response) => {
         res.status(500).json({ message: "Something went wrong try again later"});
     }
 };
+
+//define controller function to create new products
+export const createProducts = async (req: Request, res: Response) => {
+    try{
+        const { products } = req.body;
+
+        const newProducts = await client.product.createMany ({
+            data: products
+
+        });
+        res.status(201).json(newProducts);
+    } catch (e) {
+        res.status(500).json({ message: "Something went wrong try again later"})
+    }
+}
 
 export const createProduct = async (req: Request, res: Response) => {
     try {
