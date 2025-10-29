@@ -34,6 +34,7 @@ export const createProducts = async (req: Request, res: Response) => {
     }
 }
 
+//define controller function to create a product
 export const createProduct = async (req: Request, res: Response) => {
     try {
         const { productName, productDescription, unitsLeft} = req.body;
