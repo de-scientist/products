@@ -8,8 +8,10 @@ const app = express();
 //initialize prisma client
 const client = new PrismaClient();
 
+//middleware to parse json request bodies
 app.use(express.json());
 
+//define route handlers
 app.get("/products", getProducts);
 app.post("/products/bulk", createProducts);
 app.post("/products", createProduct);
