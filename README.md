@@ -44,7 +44,8 @@ In this first part, let's set up TypeScript with Express
 
 **"scripts": {**
 
-    **"start:dev": "nodemon src/index.ts"**
+&nbsp;   \*\*"start:dev": "nodemon src/index.ts"\*\*
+
 
 **},**
 
@@ -66,7 +67,7 @@ Here is our first express code in TypeScript
 
 **app.get("/", (\_req: Request, res: Response) => {**
 
-  **res.send("Welcome to Express + TS");**
+**res.send("Welcome to Express + TS");**
 
 **});**
 
@@ -76,7 +77,7 @@ Here is our first express code in TypeScript
 
 **app.listen(PORT, () => {**
 
-  **console.log(`App running on port ${PORT}`);**
+**console.log(`App running on port ${PORT}`);**
 
 **});**
 
@@ -112,29 +113,37 @@ Inside **prisma.config.ts**, add the line: **import "dotenv/config";**
 
 * Create your models in prisma/schema.prisma, example:
 
-**model User {**
+**//define the Product model**
 
-  **id        String @id @default(uuid())**
+**model Product {**
 
-  **firstName String**
+  **id                 String   @id @default(uuid()) @map("productID")**
 
-  **lastName  String**
+  **productName        String   @map("productName")**
+
+  **productDescription String   @map("productDescription")**
+
+  **unitsLeft          Int      @map("unitsLeft")**
+
+  **isDeleted          Boolean  @default(false) @map("isDeleted")**
+
+  **createdAt          DateTime @default(now()) @map("createdAt")**
+
+  **updatedAt          DateTime @updatedAt @map("updatedAt")**
 
 
 
-  **@@map("Users")**
+  **@@map("Products\_Table")**
 
-**}**
-
-Before running migrations, update the generate part of your schema.prisma from:
+**}**Before running migrations, update the generate part of your schema.prisma from:
 
 
 
 **generator client {**
 
-  **provider = "prisma-client"**
+**provider = "prisma-client"**
 
-  **output   = "../src/generated/prisma"**
+**output   = "../src/generated/prisma"**
 
 **}**
 
@@ -144,7 +153,7 @@ to:
 
 **generator client {**
 
-  **provider = "prisma-client-js"**
+**provider = "prisma-client-js"**
 
 **}**
 
@@ -152,6 +161,7 @@ to:
 
 * Update **DATABASE\_URL** in **.env** with the correct details and run migrations;
 * 
+
 **npx prisma migrate dev --name initial\_migration**
 
 
